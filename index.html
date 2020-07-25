@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/index.css">
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+	<script src="/scripts/narrativeviz.js"></script>
 </head>
 <body>
 	<div>
@@ -12,53 +13,54 @@
 	</div>
 	<div class="row">
 		<div class="column">
-			<img src="/images/jfk.jpg" alt="John F. Kennedy - 1960" style="width:25%">
+			<img src="/images/jfk.jpg" alt="John F. Kennedy - 1960" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/lbj.jpg" alt="Lyndon B. Johnson - 1964" style="width:25%">
+			<img src="/images/lbj.jpg" alt="Lyndon B. Johnson - 1964" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/nixon.jpg" alt="Richard Nixon - 1968" style="width:25%">
+			<img src="/images/nixon.jpg" alt="Richard Nixon - 1968" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/nixon.jpg" alt="Richard Nixon - 1972" style="width:25%">
+			<img src="/images/nixon.jpg" alt="Richard Nixon - 1972" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/carter.jpg" alt="Jimmy Carter - 1976" style="width:25%">
+			<img src="/images/carter.jpg" alt="Jimmy Carter - 1976" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/reagan.jpg" alt="Ronald Reagan - 1980" style="width:25%">
+			<img src="/images/reagan.jpg" alt="Ronald Reagan - 1980" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/reagan.jpg" alt="Ronald Reagan - 1984" style="width:25%">
+			<img src="/images/reagan.jpg" alt="Ronald Reagan - 1984" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/hwbush.jpg" alt="George H.W. Bush - 1988" style="width:25%">
+			<img src="/images/hwbush.jpg" alt="George H.W. Bush - 1988" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/clinton.jpg" alt="Bill Clinton - 1992" style="width:25%">
+			<img src="/images/clinton.jpg" alt="Bill Clinton - 1992" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/clinton.jpg" alt="Bill Clinton - 1996" style="width:25%">
+			<img src="/images/clinton.jpg" alt="Bill Clinton - 1996" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/wbush.jpg" alt="George W. Bush - 2000" style="width:25%">
+			<img src="/images/wbush.jpg" alt="George W. Bush - 2000" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/wbush.jpg" alt="George W. Bush - 2004" style="width:25%">
+			<img src="/images/wbush.jpg" alt="George W. Bush - 2004" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/obama.jpg" alt="Barack Obama - 2008" style="width:25%">
+			<img src="/images/obama.jpg" alt="Barack Obama - 2008" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/obama.jpg" alt="Barack Obama - 2012" style="width:25%">
+			<img src="/images/obama.jpg" alt="Barack Obama - 2012" style="width:75%">
 		</div>
 		<div class="column">
-			<img src="/images/trump.jpg" alt="Donald J. Trump - 2016" style="width:25%">
+			<img src="/images/trump.jpg" alt="Donald J. Trump - 2016" style="width:75%">
 		</div>
 	</div>
 
 	<div class="container">
+		<div id="treemap" />
 	</div><!-- /.container -->
 	<footer>
 		<ul>
