@@ -13,7 +13,7 @@ async function init() {
 
 
 
-  const data = await d3.csv("https://github.com/jaceaser/jaceaser.github.io/data.csv");
+  const data = await d3.csv("https://jaceaser.github.io/data.csv");
 }
 
 function handleYearChange() {
