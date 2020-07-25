@@ -15,3 +15,9 @@ async function init() {
 
   const data = await d3.csv("https://github.com/jaceaser/jaceaser.github.io/data.csv");
 }
+
+function handleYearChange() {
+  console.log(this.id);
+}
+
+d3.selectAll("img").on("click", handleYearChange)
