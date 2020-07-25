@@ -20,4 +20,4 @@ function handleYearChange() {
   console.log(this.id);
 }
 
-d3.selectAll("img").on("click", handleYearChange)
+d3.selectAll("a").on("click", handleYearChange)
