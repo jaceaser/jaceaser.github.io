@@ -12,7 +12,7 @@ async function init() {
   width = 960 - margin.left - margin.right;
   height = 650 - margin.top - margin.bottom;
 
-  const data = await d3.csv("https://jaceaser.github.io/data.csv").then(d => chart(d))
+  const data = await d3.csv("https://jaceaser.github.io/data.csv").then(d => chart(d, 1960))
 
   d3.selectAll("img").on("click", handleYearChange);
 }
@@ -68,6 +68,8 @@ function update(input, speed) {
   svg.selectAll(".x-axis").transition().duration(speed)
   .call(d3.axisTop(x).ticks(null, "s"))
 
+  data.sort((a, b) => b.total - a.total);
+  console.log(data.map(d => d.lexeme))
   y.domain(data.map(d => d.lexeme));
 
   svg.selectAll(".y-axis").transition().duration(speed)
@@ -93,7 +95,7 @@ function update(input, speed) {
   .merge(bars)
   .transition().duration(speed)
   .attr("y", d => y(d.data.lexeme))
-  .attr("x", function (d) { console.log(d);  console.log(d[0]);return x(d[0]);})
+  .attr("x", function (d) {return x(d[0]);})
   .attr("width", d => x(d[1]) - x(d[0]))
 
   // var text = svg.selectAll(".text")
