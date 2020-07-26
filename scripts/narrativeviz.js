@@ -27,8 +27,8 @@ function chart(csv, filterYear) {
 
   var svg = d3.select("#treemap"),
   margin = {top: 35, left: 90, bottom: 0, right: 15},
-  width = +svg.attr("width") - margin.left - margin.right,
-  height = +svg.attr("height") - margin.top - margin.bottom;
+  width = +svg.attr("width"),
+  height = +svg.attr("height");
 
   y = d3.scaleBand()
   .range([margin.top, height - margin.bottom])
@@ -96,19 +96,19 @@ function update(input, speed) {
   .attr("x", function (d) { console.log(d);  console.log(d[0]);return x(d[0]);})
   .attr("width", d => x(d[1]) - x(d[0]))
 
-  var text = svg.selectAll(".text")
-  .data(data, d => d.lexeme);
+  // var text = svg.selectAll(".text")
+  // .data(data, d => d.lexeme);
 
-  text.exit().remove()
+  // text.exit().remove()
 
-  text.enter().append("text")
-  .attr("class", "text")
-  .attr("text-anchor", "start")
-  .merge(text)
-  .transition().duration(speed)
-  .attr("y", d => y(d.lexeme) + y.bandwidth() / 2)
-  .attr("x", d => x(d.total) + 5)
-  .text(d => d.total)
+  // text.enter().append("text")
+  // .attr("class", "text")
+  // .attr("text-anchor", "start")
+  // .merge(text)
+  // .transition().duration(speed)
+  // .attr("y", d => y(d.lexeme) + y.bandwidth() / 2)
+  // .attr("x", d => x(d.total) + 5)
+  // .text(d => d.total)
 }
 
 function handleYearChange() {
