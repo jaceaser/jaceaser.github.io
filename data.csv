@@ -160,6 +160,7 @@ year,lexeme,Republican,Democrat
 1988,believe,0,53
 1988,care,0,15
 1988,children,0,13
+1988,continue,74,0
 1988,economic,101,13
 1988,education,0,14
 1988,federal,94,12
@@ -177,7 +178,6 @@ year,lexeme,Republican,Democrat
 1988,states,93,0
 1988,support,136,0
 1988,world,83,13
-1988,•,412,0
 1992,america,62,0
 1992,america's,0,19
 1992,american,114,44
@@ -260,6 +260,7 @@ year,lexeme,Republican,Democrat
 2004,families,0,45
 2004,health,130,65
 2004,jobs,0,46
+2004,make,0,45
 2004,new,115,67
 2004,people,119,60
 2004,president,313,0
@@ -268,9 +269,9 @@ year,lexeme,Republican,Democrat
 2004,security,0,55
 2004,states,100,0
 2004,support,179,64
+2004,united,88,0
 2004,work,0,60
 2004,world,0,46
-2004,–,108,53
 2008,america,0,68
 2008,american,90,107
 2008,americans,54,87
@@ -281,6 +282,7 @@ year,lexeme,Republican,Democrat
 2008,government,84,64
 2008,health,88,102
 2008,help,0,58
+2008,law,47,0
 2008,make,0,60
 2008,national,53,60
 2008,new,0,88
@@ -292,7 +294,6 @@ year,lexeme,Republican,Democrat
 2008,system,48,0
 2008,tax,60,0
 2008,work,0,87
-2008,•,65,0
 2012,administration,0,68
 2012,american,111,102
 2012,americans,0,66
