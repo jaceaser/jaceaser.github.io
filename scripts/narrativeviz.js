@@ -6,11 +6,18 @@ var y;
 var z;
 var keys;
 var _csv;
+var tooltip;
 
 async function init() {
   margin = { top: 50, right: 100, bottom: 80, left: 50 };
   width = 960 - margin.left - margin.right;
   height = 650 - margin.top - margin.bottom;
+
+  tooltip = d3.select("body")
+  .append("div")
+  .style("opacity", 0)
+  .style("font-size", "16px")
+  .attr("class", "tooltip");
 
   const data = await d3.csv("https://jaceaser.github.io/data.csv").then(d => chart(d, 1960))
 
@@ -69,7 +76,7 @@ function update(input, speed) {
   .call(d3.axisTop(x).ticks(null, "s"))
 
   data.sort((a, b) => b.total - a.total);
-  console.log(data.map(d => d.lexeme))
+
   y.domain(data.map(d => d.lexeme));
 
   svg.selectAll(".y-axis").transition().duration(speed)
@@ -85,18 +92,21 @@ function update(input, speed) {
   .attr("fill", function (d) {return z(d.key)});
 
   var bars = svg.selectAll("g.layer").selectAll("rect")
-  .data(d => d, function (e) {return e.data.lexeme;});
+  .data(d => d, function (e) {return e.data.lexeme;})
 
-  bars.exit().remove()
+  bars.exit().remove();
 
 
   bars.enter().append("rect")
   .attr("height", y.bandwidth())
   .merge(bars)
+  .on("mousemove", tooltiphover)
+  .on("mouseout", tooltipleave)
   .transition().duration(speed)
   .attr("y", d => y(d.data.lexeme))
   .attr("x", function (d) {return x(d[0]);})
-  .attr("width", d => x(d[1]) - x(d[0]))
+  .attr("width", d => x(d[1]) - x(d[0]));
+
 
   // var text = svg.selectAll(".text")
   // .data(data, d => d.lexeme);
@@ -131,4 +141,38 @@ function handleYearChange() {
   });
 
   update(id, 750);
+}
+
+function tooltipleave() {
+  tooltip
+  .transition()
+  .duration(200)
+  .style("opacity", 0);
+
+}
+
+function tooltiphover(d) {
+  var frequency;
+  if (d[0] == 0 && d[1] == d.data.Republican) {
+    frequency = d.data.Republican;
+
+    tooltip
+    .style("opacity", 1)
+    .style("left", (d3.event.pageX+30) + "px")
+    .style("top", (d3.event.pageY+30) + "px").html("<strong>Frequency: </strong> <span style='color:red'>" + frequency);
+  } else if (d[0] != 0) {
+    frequency = d.data.Democrat;
+
+    tooltip
+    .style("opacity", 1)
+    .style("left", (d3.event.pageX+30) + "px")
+    .style("top", (d3.event.pageY+30) + "px").html("<strong>Frequency: </strong> <span style='color:steelblue'>" + frequency);
+  } else if (d[0] == 0 && d[1] == d.data.Democrat) {
+    frequency = d.data.Democrat;
+
+    tooltip
+    .style("opacity", 1)
+    .style("left", (d3.event.pageX+30) + "px")
+    .style("top", (d3.event.pageY+30) + "px").html("<strong>Frequency: </strong> <span style='color:steelblue'>" + frequency);
+  }
 }
