@@ -17,14 +17,15 @@ async function init() {
     bottom: 80,
     left: 50
   };
-  width = 960 - margin.left - margin.right;
-  height = 650 - margin.top - margin.bottom;
+  width = 768 - margin.left - margin.right;
+  height = 520 - margin.top - margin.bottom;
 
   tooltip = d3.select("body")
     .append("div")
     .style("opacity", 0)
     .style("font-size", "16px")
     .attr("class", "tooltip");
+    handleAnnotations();
 
   const data = await d3.csv("https://jaceaser.github.io/data.csv").then(d => chart(d, selectedYear));
 
@@ -43,7 +44,7 @@ function chart(csv, filterYear) {
   var year = [...new Set(csv.map(d => d.year))]
   var lexemes = [...new Set(csv.map(d => d.lexeme))]
 
-  var svg = d3.select("#treemap"),
+  var svg = d3.select("#barchart"),
     margin = {
       top: 35,
       left: 90,
@@ -74,11 +75,11 @@ function chart(csv, filterYear) {
     .range(["red", "steelblue"])
     .domain(keys);
 
-  update(filterYear, 0)
+  update(filterYear, 0);
 }
 
 function update(input, speed) {
-  var svg = d3.select("#treemap");
+  var svg = d3.select("#barchart");
   var data = input != null ? _csv.filter(f => f.year == input) : _csv;
 
   data.forEach(function(d) {
@@ -162,6 +163,8 @@ function handleYearChange() {
   } else {
     d3.select('#back').style("display", "inline");
   }
+
+  handleAnnotations();
 }
 
 function handleNext() {
@@ -191,6 +194,8 @@ function handleNext() {
   if (selectedYear == 2016) {
     d3.select('#next').style("display", "none");
   }
+
+  handleAnnotations();
 }
 
 function handleBack() {
@@ -220,6 +225,8 @@ function handleBack() {
   if (selectedYear == 1960) {
     d3.select('#back').style("display", "none");
   }
+
+  handleAnnotations();
 }
 
 function tooltipleave() {
@@ -325,4 +332,351 @@ function findState(state) {
   });
 
   return stateData;
+}
+
+function handleAnnotations() {
+  d3.selectAll(".annotation").remove();
+
+  var year = parseInt(selectedYear);
+
+  switch (year) {
+    case 1960:
+      handle1960Annotations();
+      break;
+    case 1964:
+      handle1964Annotations();
+      break;
+    case 1968:
+      handle1968Annotations();
+      break;
+    case 1972:
+      handle1972Annotations();
+      break;
+    case 1976:
+      handle1976Annotations();
+      break;
+    case 1980:
+      handle1980Annotations();
+      break;
+    case 1984:
+      handle1984Annotations();
+      break;
+    case 1988:
+      handle1988Annotations();
+      break;
+    case 1992:
+      handle1992Annotations();
+      break;
+    case 1996:
+      handle1996Annotations();
+      break;
+    case 2000:
+      handle2000Annotations();
+      break;
+    case 2004:
+      handle2004Annotations();
+      break;
+    case 2008:
+      handle2008Annotations();
+      break;
+    case 2012:
+      handle2012Annotations();
+      break;
+    case 2016:
+      handle2016Annotations();
+      break;
+  }
+}
+
+function handle1960Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 705)
+    .attr("y1", 400)
+    .attr("x2", 600)
+    .attr("y2", 555);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 560)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("In 1960 Florida was the only Southern state to vote Republican");
+
+
+  svg = d3.select("#barchart");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "blue")
+    .style("stroke-width", .3)
+    .attr("x1", 705)
+    .attr("y1", 360)
+    .attr("x2", 565)
+    .attr("y2", 245);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "blue")
+    .style("stroke-width", .3)
+    .attr("x1", 705)
+    .attr("y1", 360)
+    .attr("x2", 870)
+    .attr("y2", 95);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 600)
+    .attr("y", 365)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "blue")
+    .text("The 1960 Democratic platform was based on change");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 600)
+    .attr("y", 365)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "blue")
+    .text("using words like shall, new.");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 460)
+    .attr("x2", 285)
+    .attr("y2", 420);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 460)
+    .attr("x2", 370)
+    .attr("y2", 335);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 465)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 1960 Repulican Platform used words like support &");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 465)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("pledge when referring to Civil Rights");
+
+}
+
+function handle1964Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 375)
+    .attr("x2", 600)
+    .attr("y2", 555);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 560)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("In 1964 many Southern States voted Republican");
+
+
+  svg = d3.select("#barchart");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "blue")
+    .style("stroke-width", .3)
+    .attr("x1", 705)
+    .attr("y1", 260)
+    .attr("x2", 655)
+    .attr("y2", 155);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "blue")
+    .style("stroke-width", .3)
+    .attr("x1", 705)
+    .attr("y1", 260)
+    .attr("x2", 685)
+    .attr("y2", 85);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "blue")
+    .style("stroke-width", .3)
+    .attr("x1", 705)
+    .attr("y1", 260)
+    .attr("x2", 490)
+    .attr("y2", 250);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "blue")
+    .style("stroke-width", .3)
+    .attr("x1", 705)
+    .attr("y1", 260)
+    .attr("x2", 675)
+    .attr("y2", 100);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 650)
+    .attr("y", 265)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "blue")
+    .text("The 1964 Democratic Platform touted the passage of the ");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 650)
+    .attr("y", 265)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "blue")
+    .text("1960, 1961, & 1964 Civil Rights Act. ");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 460)
+    .attr("x2", 245)
+    .attr("y2", 452);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 460)
+    .attr("x2", 325)
+    .attr("y2", 337);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 465)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 1964 Republican Platform made very few references to");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 465)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("the Civil Rights Acts. Instead they mentioned freedom(and being free)");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 465)
+    .attr("dy", "3em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("and governments role in fostering and maintaining freedom.");
+}
+
+function handle1968Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 375)
+    .attr("x2", 600)
+    .attr("y2", 545);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 545)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("In 1968 George Wallace, a former Governer of Alabama,");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 545)
+    .attr("dy", "2em").attr("font-size", "15")
+    .text("won many southern states as an Independent. He was pro Segregation.");
+
+
+  svg = d3.select("#barchart");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "blue")
+    .style("stroke-width", .3)
+    .attr("x1", 565)
+    .attr("y1", 380)
+    .attr("x2", 420)
+    .attr("y2", 365);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "blue")
+    .style("stroke-width", .3)
+    .attr("x1", 565)
+    .attr("y1", 380)
+    .attr("x2", 510)
+    .attr("y2", 310);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 570)
+    .attr("y", 365)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "blue")
+    .text("The 1968 Democratic platform focused on People");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 570)
+    .attr("y", 365)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "blue")
+    .text("and Education. There were very few references to Civil Rights.");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 495)
+    .attr("y1", 475)
+    .attr("x2", 310)
+    .attr("y2", 430);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 445)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 1968 Republican Platform used the word \"encourage\" frequently.");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 445)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("In context, the GOP was encouraging state and local governments");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 445)
+    .attr("dy", "3em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("to enact programs and change with the support of the federal gov.");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 500)
+    .attr("y", 445)
+    .attr("dy", "4em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The overall use of this word is very positive.");
+
 }

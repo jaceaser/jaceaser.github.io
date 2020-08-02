@@ -6,13 +6,18 @@
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="/scripts/narrativeviz.js"></script>
 </head>
-<body onload='init();'>
-	<div>
+<body onload='init();' style="background-color: #f7f5f5">
+	<div style="background-color: #fc8383;">
+		<br />
 		<h1 style="text-align:center"> Was the Southern Strategy real? </h1>
-	</div>
-	<br />
-	<div>
-		<p  style="text-align:center">Beginning in 1960, the first in a wave of Civil Rights Acts were passed clearing the way for U.S. citizens to have equal rights and protections. While every Civil Rights Act passed with support for both Republicans and Democrats </p>
+		<br />
+		<div style="margin-left: 100px; margin-right: 100px; width: 80%">
+			<b><p  style="text-align:center;">Beginning in 1960, the first in a wave of Civil Rights Acts were passed clearing the way for U.S. citizens to have equal rights and protections. While every Civil Rights Act passed with support from both Republicans and Democrats, the Republicans exploited the racial tensions it created to convert
+			 white Democrat voters to Republicans. The "Southern Strategy" was a top down narrative, which Richard Nixon used in his presidential campaigns. While Republican cadidates reportedly used this strategy, did the party platforms support this narrative? This slide show will look through the Democratic and Republican platforms beginning in 1960 to identify what caused the South to turn Republican and if the Southern Strategy exploiting racial tensions from the Civil Rights Acts impacted the transition.
+			</p></b>
+		</div>
+		<br/>
+		<br/>
 	</div>
 	<div>
 		<a href="#" id="back" onclick="return false;" style="display: none">Back</a>
@@ -80,13 +85,9 @@
 			<p align="center">2016</p>
 		</div>
 	</div>
-	<div>
-		
-	</div>
-
-	<div style="margin-top: 25px;">
+	<div style="margin-top: 10px;">
 		<div style="width: 50%; float: left;">
-			<svg id="treemap" width="960" height="650"></svg>
+			<svg id="barchart" width="960" height="520"></svg>
 		</div>
 		<div style="margin-left: 50%; width: 50%;">
 			<svg id="electoralmap" width="920" height="580"></svg>
