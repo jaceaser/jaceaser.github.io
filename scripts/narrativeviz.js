@@ -435,7 +435,7 @@ function handle1960Annotations() {
     .attr("y", 365)
     .attr("dy", "2em").attr("font-size", "15")
     .style("fill", "steelblue")
-    .text("using words like shall, new.");
+    .text("using terms like shall, new.");
 
 
   svg.append('line')
@@ -460,7 +460,7 @@ function handle1960Annotations() {
     .attr("y", 465)
     .attr("dy", "1em").attr("font-size", "15")
     .style("fill", "red")
-    .text("The 1960 Repulican Platform used words like support &");
+    .text("The 1960 Repulican Platform used terms like support &");
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 500)
@@ -653,7 +653,7 @@ function handle1968Annotations() {
     .attr("y", 445)
     .attr("dy", "1em").attr("font-size", "15")
     .style("fill", "red")
-    .text("The 1968 Republican Platform used the word \"encourage\" frequently.");
+    .text("The 1968 Republican Platform used the term \"encourage\" frequently.");
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 500)
@@ -674,7 +674,7 @@ function handle1968Annotations() {
     .attr("y", 445)
     .attr("dy", "4em").attr("font-size", "15")
     .style("fill", "red")
-    .text("The overall use of this word is very positive.");
+    .text("The overall use of this term is very positive.");
 }
 
 function handle1972Annotations() {
@@ -1579,14 +1579,21 @@ function handle2004Annotations() {
     .style("stroke", "red")
     .style("stroke-width", .3)
     .attr("x1", 395)
-    .attr("y1", 398)
+    .attr("y1", 405)
     .attr("x2", 315)
-    .attr("y2", 398);
+    .attr("y2", 315);
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 400)
     .attr("y", 388)
     .attr("dy", "1em").attr("font-size", "15")
     .style("fill", "red")
-    .text("The 2000 Republican Platform emphasized health care and care for the elderly.");
+    .text("The 2004 Republican Platform used the term effort frequently when describing");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 388)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("the activites to secure the country and prevent terrorism.");
 }
