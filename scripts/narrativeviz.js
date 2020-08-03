@@ -1376,10 +1376,10 @@ function handle1996Annotations() {
 
    svg.append("rect")
     .attr("class", "annotation")
-    .attr("height", 60)
+    .attr("height", 50)
     .attr("y", 245)
     .attr("x", 520)
-    .attr("width", 360)
+    .attr("width", 395)
     .attr("fill", "lightgray");
   svg.append("text")
     .attr("class", "annotation")
@@ -1387,82 +1387,19 @@ function handle1996Annotations() {
     .attr("y", 250)
     .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
     .style("fill", "black")
-    .text("The 1992 Republican platform increased its reference to Family(62)");
+    .text("The 1996 Republican platform increased its reference to Abortion(11) while");
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 525)
     .attr("y", 250)
     .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
     .style("fill", "black")
-    .text("while the Democrats did as well(20). The GOP platform mentioned");
+    .text("the Democrats mentioned is sparingly(2). The GOP platform mentioned");
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 525)
     .attr("y", 250)
     .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
     .style("fill", "black")
-    .text("Abortion 4 times, while the Democratic platform mentioned it twice");
-  svg.append("text")
-    .attr("class", "annotation")
-    .attr("x", 525)
-    .attr("y", 250)
-    .attr("dy", "4em").attr("font-size", "12").attr("font-weight","bold")
-    .style("fill", "black")
-    .text("in conjunction with health care.");
-
-
-  // svg.append('line')
-  //   .attr("class", "annotation")
-  //   .style("stroke", "steelblue")
-  //   .style("stroke-width", .3)
-  //   .attr("x1", 295)
-  //   .attr("y1", 465)
-  //   .attr("x2", 180)
-  //   .attr("y2", 430);
-  // svg.append('line')
-  //   .attr("class", "annotation")
-  //   .style("stroke", "steelblue")
-  //   .style("stroke-width", .3)
-  //   .attr("x1", 295)
-  //   .attr("y1", 465)
-  //   .attr("x2", 180)
-  //   .attr("y2", 410);
-  // svg.append('line')
-  //   .attr("class", "annotation")
-  //   .style("stroke", "steelblue")
-  //   .style("stroke-width", .3)
-  //   .attr("x1", 295)
-  //   .attr("y1", 465)
-  //   .attr("x2", 360)
-  //   .attr("y2", 345);
-  // svg.append('line')
-  //   .attr("class", "annotation")
-  //   .style("stroke", "steelblue")
-  //   .style("stroke-width", .3)
-  //   .attr("x1", 295)
-  //   .attr("y1", 465)
-  //   .attr("x2", 170)
-  //   .attr("y2", 450);
-  // svg.append('line')
-  //   .attr("class", "annotation")
-  //   .style("stroke", "steelblue")
-  //   .style("stroke-width", .3)
-  //   .attr("x1", 295)
-  //   .attr("y1", 465)
-  //   .attr("x2", 165)
-  //   .attr("y2", 470);
-  // svg.append("text")
-  //   .attr("class", "annotation")
-  //   .attr("x", 300)
-  //   .attr("y", 450)
-  //   .attr("dy", "1em").attr("font-size", "15")
-  //   .style("fill", "steelblue")
-  //   .text("The 1992 Democratic Platform had a different tone and used Believe frequently");
-  // svg.append("text")
-  //   .attr("class", "annotation")
-  //   .attr("x", 300)
-  //   .attr("y", 450)
-  //   .attr("dy", "2em").attr("font-size", "15")
-  //   .style("fill", "steelblue")
-  //   .text("to highlight its stances, including health care, education, and investment in children");
+    .text("divorce and the review of divorce laws to create family stability.");
 }
