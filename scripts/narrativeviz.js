@@ -1597,3 +1597,107 @@ function handle2004Annotations() {
     .style("fill", "red")
     .text("the activites to secure the country and prevent terrorism.");
 }
+
+function handle2008Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 730)
+    .attr("y1", 250)
+    .attr("x2", 600)
+    .attr("y2", 530);  
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 720)
+    .attr("y1", 285)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 700)
+    .attr("y1", 400)
+    .attr("x2", 600)
+    .attr("y2", 530);     
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("Barack Obama won Florida, North Carolina, & Virginia");
+
+
+  svg = d3.select("#barchart");
+
+   svg.append("rect")
+    .attr("class", "annotation")
+    .attr("height", 85)
+    .attr("y", 245)
+    .attr("x", 520)
+    .attr("width", 415)
+    .attr("fill", "lightgray");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("The 2008 Republican platform continued to reference to Abortion(12) while");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("the Democrats used strong language against any efforts to undermine");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("the right. The GOP continued to oppose same-sex marriage, while the ");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "4em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("Democratic party conveyed a message of inclusion to same-sex couples.");
+    svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "6em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("Both parties mentioned health care frequently which was a major issue in 2008.");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 405)
+    .attr("y1", 405)
+    .attr("x2", 375)
+    .attr("y2", 310);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 410)
+    .attr("y", 388)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("The 2008 Republican Platform used the term ensure frequently when describing");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 410)
+    .attr("y", 388)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("social programs and safety nets.");
+}
