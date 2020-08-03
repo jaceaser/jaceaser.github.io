@@ -1685,14 +1685,14 @@ function handle2008Annotations() {
     .attr("x1", 405)
     .attr("y1", 405)
     .attr("x2", 375)
-    .attr("y2", 310);
+    .attr("y2", 305);
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 410)
     .attr("y", 388)
     .attr("dy", "1em").attr("font-size", "15")
     .style("fill", "steelblue")
-    .text("The 2008 Republican Platform used the term ensure frequently when describing");
+    .text("The 2008 Democratic Platform used the term ensure frequently when describing");
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 410)
