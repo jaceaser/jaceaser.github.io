@@ -1701,3 +1701,94 @@ function handle2008Annotations() {
     .style("fill", "steelblue")
     .text("social programs and safety nets.");
 }
+
+function handle2012Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 720)
+    .attr("y1", 285)
+    .attr("x2", 600)
+    .attr("y2", 530);   
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("Barack Obama lost North Carolina from the previous election");
+
+
+  svg = d3.select("#barchart");
+
+   svg.append("rect")
+    .attr("class", "annotation")
+    .attr("height", 40)
+    .attr("y", 245)
+    .attr("x", 520)
+    .attr("width", 390)
+    .attr("fill", "lightgray");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("In 2012 both parties discussed the Defense of Marriage Act, the GOP");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("fully backs the DOMA, while the Democrats supported a full repeal of it.");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 430)
+    .attr("y1", 370)
+    .attr("x2", 350)
+    .attr("y2", 335);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 430)
+    .attr("y", 350)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("The 2012 Democratic Platform used the term security frequently when describing");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 430)
+    .attr("y", 350)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("social programs and safety nets instead of the word ensure previously.");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 425)
+    .attr("y1", 470)
+    .attr("x2", 290)
+    .attr("y2", 490);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 430)
+    .attr("y", 450)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 2012 Republican Platform used the term law frequently when describing");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 430)
+    .attr("y", 450)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("legal immigration and following the laws of the US.");
+}
