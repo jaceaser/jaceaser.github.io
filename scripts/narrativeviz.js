@@ -134,37 +134,39 @@ function update(input, speed) {
 function handleYearChange() {
   var id = this.id
 
-  //show disabled
-  d3.selectAll("img").each(function() {
-    if (this.id != id) {
-      d3.select(this).style("opacity", ".1");
+  if (this.id != "image") {
+      //show disabled
+    d3.selectAll("img").each(function() {
+      if (this.id != id && this.id != "image") {
+        d3.select(this).style("opacity", ".1");
+      }
+    });
+
+    //highlight selected image
+    d3.selectAll("img").each(function() {
+      if (this.id == id) {
+        d3.select(this).style("opacity", "1");
+      }
+    });
+
+    update(id, 750);
+    selectedYear = id;
+    updateMap();
+
+    if (selectedYear == 2016) {
+      d3.select('#next').style("display", "none");
+    } else {
+      d3.select('#next').style("display", "inline");
     }
-  });
 
-  //highlight selected image
-  d3.selectAll("img").each(function() {
-    if (this.id == id) {
-      d3.select(this).style("opacity", "1");
+    if (selectedYear == 1960) {
+      d3.select('#back').style("display", "none");
+    } else {
+      d3.select('#back').style("display", "inline");
     }
-  });
-
-  update(id, 750);
-  selectedYear = id;
-  updateMap();
-
-  if (selectedYear == 2016) {
-    d3.select('#next').style("display", "none");
-  } else {
-    d3.select('#next').style("display", "inline");
-  }
-
-  if (selectedYear == 1960) {
-    d3.select('#back').style("display", "none");
-  } else {
-    d3.select('#back').style("display", "inline");
-  }
 
   handleAnnotations();
+  }
 }
 
 function handleNext() {
@@ -174,7 +176,7 @@ function handleNext() {
     //show disabled
     selectedYear += 4;
     d3.selectAll("img").each(function() {
-      if (this.id != selectedYear) {
+      if (this.id != selectedYear && this.id != "image") {
         d3.select(this).style("opacity", ".1");
       }
     });
@@ -188,11 +190,6 @@ function handleNext() {
 
     update(selectedYear, 750);
     updateMap();
-    d3.select('#back').style("display", "inline");
-  }
-
-  if (selectedYear == 2016) {
-    d3.select('#next').style("display", "none");
   }
 
   handleAnnotations();
@@ -205,7 +202,7 @@ function handleBack() {
     //show disabled
     selectedYear -= 4;
     d3.selectAll("img").each(function() {
-      if (this.id != selectedYear) {
+      if (this.id != selectedYear &&  this.id != "image") {
         d3.select(this).style("opacity", ".1");
       }
     });
@@ -411,7 +408,7 @@ function handle1960Annotations() {
 
   svg.append('line')
     .attr("class", "annotation")
-    .style("stroke", "blue")
+    .style("stroke", "steelblue")
     .style("stroke-width", .3)
     .attr("x1", 705)
     .attr("y1", 360)
@@ -419,7 +416,7 @@ function handle1960Annotations() {
     .attr("y2", 245);
   svg.append('line')
     .attr("class", "annotation")
-    .style("stroke", "blue")
+    .style("stroke", "steelblue")
     .style("stroke-width", .3)
     .attr("x1", 705)
     .attr("y1", 360)
@@ -430,14 +427,14 @@ function handle1960Annotations() {
     .attr("x", 600)
     .attr("y", 365)
     .attr("dy", "1em").attr("font-size", "15")
-    .style("fill", "blue")
+    .style("fill", "steelblue")
     .text("The 1960 Democratic platform was based on change");
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 600)
     .attr("y", 365)
     .attr("dy", "2em").attr("font-size", "15")
-    .style("fill", "blue")
+    .style("fill", "steelblue")
     .text("using words like shall, new.");
 
 
@@ -497,7 +494,7 @@ function handle1964Annotations() {
 
   svg.append('line')
     .attr("class", "annotation")
-    .style("stroke", "blue")
+    .style("stroke", "steelblue")
     .style("stroke-width", .3)
     .attr("x1", 705)
     .attr("y1", 260)
@@ -505,7 +502,7 @@ function handle1964Annotations() {
     .attr("y2", 155);
   svg.append('line')
     .attr("class", "annotation")
-    .style("stroke", "blue")
+    .style("stroke", "steelblue")
     .style("stroke-width", .3)
     .attr("x1", 705)
     .attr("y1", 260)
@@ -513,7 +510,7 @@ function handle1964Annotations() {
     .attr("y2", 85);
   svg.append('line')
     .attr("class", "annotation")
-    .style("stroke", "blue")
+    .style("stroke", "steelblue")
     .style("stroke-width", .3)
     .attr("x1", 705)
     .attr("y1", 260)
@@ -521,7 +518,7 @@ function handle1964Annotations() {
     .attr("y2", 250);
   svg.append('line')
     .attr("class", "annotation")
-    .style("stroke", "blue")
+    .style("stroke", "steelblue")
     .style("stroke-width", .3)
     .attr("x1", 705)
     .attr("y1", 260)
@@ -532,14 +529,14 @@ function handle1964Annotations() {
     .attr("x", 650)
     .attr("y", 265)
     .attr("dy", "1em").attr("font-size", "15")
-    .style("fill", "blue")
+    .style("fill", "steelblue")
     .text("The 1964 Democratic Platform touted the passage of the ");
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 650)
     .attr("y", 265)
     .attr("dy", "2em").attr("font-size", "15")
-    .style("fill", "blue")
+    .style("fill", "steelblue")
     .text("1960, 1961, & 1964 Civil Rights Act. ");
 
 
@@ -612,7 +609,7 @@ function handle1968Annotations() {
 
   svg.append('line')
     .attr("class", "annotation")
-    .style("stroke", "blue")
+    .style("stroke", "steelblue")
     .style("stroke-width", .3)
     .attr("x1", 565)
     .attr("y1", 380)
@@ -620,7 +617,7 @@ function handle1968Annotations() {
     .attr("y2", 365);
   svg.append('line')
     .attr("class", "annotation")
-    .style("stroke", "blue")
+    .style("stroke", "steelblue")
     .style("stroke-width", .3)
     .attr("x1", 565)
     .attr("y1", 380)
@@ -631,14 +628,14 @@ function handle1968Annotations() {
     .attr("x", 570)
     .attr("y", 365)
     .attr("dy", "1em").attr("font-size", "15")
-    .style("fill", "blue")
+    .style("fill", "steelblue")
     .text("The 1968 Democratic platform focused on People");
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 570)
     .attr("y", 365)
     .attr("dy", "2em").attr("font-size", "15")
-    .style("fill", "blue")
+    .style("fill", "steelblue")
     .text("and Education. There were very few references to Civil Rights.");
 
 
@@ -678,5 +675,794 @@ function handle1968Annotations() {
     .attr("dy", "4em").attr("font-size", "15")
     .style("fill", "red")
     .text("The overall use of this word is very positive.");
+}
 
+function handle1972Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 275)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("In 1972 Richard Nixon completely swept the U.S.");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "2em").attr("font-size", "15")
+    .text("only losing Massachusetts and D.C. ");
+
+
+  svg = d3.select("#barchart");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 375)
+    .attr("y1", 350)
+    .attr("x2", 320)
+    .attr("y2", 355);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 375)
+    .attr("y1", 350)
+    .attr("x2", 325)
+    .attr("y2", 335);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 380)
+    .attr("y", 330)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("The 1972 Democratic focused on Tax Reform(Distribution), the Party");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 380)
+    .attr("y", 330)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("and Education. The references to Civil Rights began to expand outside of race.");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 370)
+    .attr("y1", 420)
+    .attr("x2", 310)
+    .attr("y2", 390);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 370)
+    .attr("y1", 420)
+    .attr("x2", 290)
+    .attr("y2", 490);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 395)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 1972 Republican Platform made only 2 mentions of Civil Rights.");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 395)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("They made many reference to the last 4 \"years\" and what the accomplished.");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 395)
+    .attr("dy", "3em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The GOP mentioned States referring to US in a very positive");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 395)
+    .attr("dy", "4em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("light, while the Democratic parties tone was much more pessimistic.");
+}
+
+function handle1976Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 675)
+    .attr("y1", 350)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("In 1976 Jimmy Carter seemed to swing the South back, but");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "2em").attr("font-size", "15")
+    .text("he was from Georgia and Richard Nixon had resigned.");
+
+
+  svg = d3.select("#barchart");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 395)
+    .attr("y1", 365)
+    .attr("x2", 340)
+    .attr("y2", 345);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 395)
+    .attr("y1", 365)
+    .attr("x2", 280)
+    .attr("y2", 395);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 330)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("The 1976 Democratic highlights the Oil Embargo and the need for alternative energy");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 330)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("sources. Additionally, they also proposed the Equal Rights Amendment which");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 330)
+    .attr("dy", "3em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("sought to eliminate discrimination based on sex. Health was also mentioned,");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 330)
+    .attr("dy", "4em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("referring to healthcare and clean air.");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 370)
+    .attr("y1", 460)
+    .attr("x2", 280)
+    .attr("y2", 415);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 425)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 1976 Republican Platform made no mention of Civil Rights, however");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 425)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("they made references to the Equal Rights Amendment and criticized the Democratic");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 425)
+    .attr("dy", "3em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("controlled congress. While not one of the top 15, the GOP mentioned abortion and");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 425)
+    .attr("dy", "4em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("passing an amendment to protect unborn children. The Democratic platform mentioned abortion");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 425)
+    .attr("dy", "5em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("but, said they did not want to overturn a SCOTUS ruling.");
+}
+
+function handle1980Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 675)
+    .attr("y1", 350)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("In 1980 Jimmy Carter was only able to win his home");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "2em").attr("font-size", "15")
+    .text("state in the south.");
+
+
+  svg = d3.select("#barchart");
+
+   svg.append("rect")
+    .attr("class", "annotation")
+    .attr("height", 75)
+    .attr("y", 245)
+    .attr("x", 470)
+    .attr("width", 450)
+    .attr("fill", "lightgray");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 475)
+    .attr("y", 250)
+    .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("While not reflected in the top-15 term frequency for any party in 1980, there are a");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 475)
+    .attr("y", 250)
+    .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("few interesting insights. In 1980 there became a clearer line between conservative");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 475)
+    .attr("y", 250)
+    .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("and liberal stances between the party. The GOP intended to recognize the importance");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 475)
+    .attr("y", 250)
+    .attr("dy", "4em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("of strong families and abolition of abortion, while the Democrats took a stand and");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 475)
+    .attr("y", 250)
+    .attr("dy", "5em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("declared they stood by a women's right to choose.");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 395)
+    .attr("y1", 345)
+    .attr("x2", 360)
+    .attr("y2", 330);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 325)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 1980 Republican Platform capitalized on the Carter Administration's failures.");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 325)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("While not focused, they made broad statements regarding discrimination and equal rights.");
+}
+
+function handle1984Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 510)
+    .attr("y1", 125)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 350)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("In 1984 Ronald Reagan dominated and only conceded Minnesota and D.C.");
+
+
+  svg = d3.select("#barchart");
+
+  
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 825)
+    .attr("y1", 150)
+    .attr("x2", 925)
+    .attr("y2", 50);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 750)
+    .attr("y", 150)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("Democratic has not been the");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 750)
+    .attr("y", 150)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("most frequent term since 1960.");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 330)
+    .attr("x2", 555)
+    .attr("y2", 265);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 600)
+    .attr("y1", 330)
+    .attr("x2", 520)
+    .attr("y2", 290);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 425)
+    .attr("y", 330)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("The 1984 Democratic platform did not offer any concrete solutions.");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 425)
+    .attr("y", 330)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("We can see party continues to be a strong term used within the platform");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 425)
+    .attr("y", 330)
+    .attr("dy", "3em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("since 1972. They also used the term \"new\" in a reference to change.");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 370)
+    .attr("y1", 490)
+    .attr("x2", 325)
+    .attr("y2", 485);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 370)
+    .attr("y1", 490)
+    .attr("x2", 315)
+    .attr("y2", 515);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 455)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 1984 Republican Platform began to incorporate Reaganomics and discuss free enterprise.");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 455)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The message included facts and percentages highlighting the successes of his");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 455)
+    .attr("dy", "3em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("administration. Additionally, the GOP platform also renewed references to the 1964 Civil Rights");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 375)
+    .attr("y", 455)
+    .attr("dy", "4em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("Act and discussed the importance of equal opportunity.");
+}
+
+function handle1988Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 625)
+    .attr("y1", 350)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("George H.W. Bush continued to win the South in 1988.");
+
+
+  svg = d3.select("#barchart");
+
+   svg.append("rect")
+    .attr("class", "annotation")
+    .attr("height", 50)
+    .attr("y", 345)
+    .attr("x", 470)
+    .attr("width", 380)
+    .attr("fill", "lightgray");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 475)
+    .attr("y", 350)
+    .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("The 1988 Republican platform mentions Family 54 times compared to");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 475)
+    .attr("y", 350)
+    .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("8 times in the Democratic platform. The GOP platform mentioned");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 475)
+    .attr("y", 350)
+    .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("Abortion 6 times, while the Democratic platform did not metion it at all.");
+
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 295)
+    .attr("y1", 465)
+    .attr("x2", 180)
+    .attr("y2", 430);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 295)
+    .attr("y1", 465)
+    .attr("x2", 180)
+    .attr("y2", 410);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 295)
+    .attr("y1", 465)
+    .attr("x2", 360)
+    .attr("y2", 345);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 295)
+    .attr("y1", 465)
+    .attr("x2", 170)
+    .attr("y2", 450);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "steelblue")
+    .style("stroke-width", .3)
+    .attr("x1", 295)
+    .attr("y1", 465)
+    .attr("x2", 165)
+    .attr("y2", 470);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 300)
+    .attr("y", 450)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("The 1988 Democratic Platform had a different tone and used Believe frequently");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 300)
+    .attr("y", 450)
+    .attr("dy", "2em").attr("font-size", "15")
+    .style("fill", "steelblue")
+    .text("to highlight its stances, including health care, education, and investment in children");
+}
+
+function handle1992Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 540)
+    .attr("y1", 370)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("Bill Clinton won his home state(AR) and Louisiana");
+
+
+  svg = d3.select("#barchart");
+
+   svg.append("rect")
+    .attr("class", "annotation")
+    .attr("height", 60)
+    .attr("y", 245)
+    .attr("x", 520)
+    .attr("width", 360)
+    .attr("fill", "lightgray");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("The 1992 Republican platform increased its reference to Family(62)");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("while the Democrats did as well(20). The GOP platform mentioned");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("Abortion 4 times, while the Democratic platform mentioned it twice");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "4em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("in conjunction with health care.");
+
+
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 180)
+  //   .attr("y2", 430);
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 180)
+  //   .attr("y2", 410);
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 360)
+  //   .attr("y2", 345);
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 170)
+  //   .attr("y2", 450);
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 165)
+  //   .attr("y2", 470);
+  // svg.append("text")
+  //   .attr("class", "annotation")
+  //   .attr("x", 300)
+  //   .attr("y", 450)
+  //   .attr("dy", "1em").attr("font-size", "15")
+  //   .style("fill", "steelblue")
+  //   .text("The 1992 Democratic Platform had a different tone and used Believe frequently");
+  // svg.append("text")
+  //   .attr("class", "annotation")
+  //   .attr("x", 300)
+  //   .attr("y", 450)
+  //   .attr("dy", "2em").attr("font-size", "15")
+  //   .style("fill", "steelblue")
+  //   .text("to highlight its stances, including health care, education, and investment in children");
+}
+
+function handle1996Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 675)
+    .attr("y1", 340)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 700)
+    .attr("y1", 400)
+    .attr("x2", 600)
+    .attr("y2", 530);    
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("Bill Clinton added Florida, but lost Georgia");
+
+
+  svg = d3.select("#barchart");
+
+   svg.append("rect")
+    .attr("class", "annotation")
+    .attr("height", 60)
+    .attr("y", 245)
+    .attr("x", 520)
+    .attr("width", 360)
+    .attr("fill", "lightgray");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("The 1992 Republican platform increased its reference to Family(62)");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("while the Democrats did as well(20). The GOP platform mentioned");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("Abortion 4 times, while the Democratic platform mentioned it twice");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "4em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("in conjunction with health care.");
+
+
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 180)
+  //   .attr("y2", 430);
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 180)
+  //   .attr("y2", 410);
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 360)
+  //   .attr("y2", 345);
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 170)
+  //   .attr("y2", 450);
+  // svg.append('line')
+  //   .attr("class", "annotation")
+  //   .style("stroke", "steelblue")
+  //   .style("stroke-width", .3)
+  //   .attr("x1", 295)
+  //   .attr("y1", 465)
+  //   .attr("x2", 165)
+  //   .attr("y2", 470);
+  // svg.append("text")
+  //   .attr("class", "annotation")
+  //   .attr("x", 300)
+  //   .attr("y", 450)
+  //   .attr("dy", "1em").attr("font-size", "15")
+  //   .style("fill", "steelblue")
+  //   .text("The 1992 Democratic Platform had a different tone and used Believe frequently");
+  // svg.append("text")
+  //   .attr("class", "annotation")
+  //   .attr("x", 300)
+  //   .attr("y", 450)
+  //   .attr("dy", "2em").attr("font-size", "15")
+  //   .style("fill", "steelblue")
+  //   .text("to highlight its stances, including health care, education, and investment in children");
 }
