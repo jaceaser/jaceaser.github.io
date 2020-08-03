@@ -1403,3 +1403,70 @@ function handle1996Annotations() {
     .style("fill", "black")
     .text("divorce and the review of divorce laws to create family stability.");
 }
+
+function handle2000Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 625)
+    .attr("y1", 350)
+    .attr("x2", 600)
+    .attr("y2", 530);  
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("George W. Bush won, the entire South.");
+
+
+  svg = d3.select("#barchart");
+
+   svg.append("rect")
+    .attr("class", "annotation")
+    .attr("height", 50)
+    .attr("y", 245)
+    .attr("x", 520)
+    .attr("width", 395)
+    .attr("fill", "lightgray");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("The 1996 Republican platform increased its reference to Abortion(11) while");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("the Democrats mentioned is sparingly(2). The GOP platform mentioned");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("divorce and the review of divorce laws to create family stability.");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 395)
+    .attr("y1", 398)
+    .attr("x2", 315)
+    .attr("y2", 398);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 388)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 2000 Republican Platform emphasized health care and care for the elderly.");
+}
