@@ -1242,12 +1242,58 @@ function handle1992Annotations() {
     .attr("y1", 370)
     .attr("x2", 600)
     .attr("y2", 530);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 540)
+    .attr("y1", 320)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 620)
+    .attr("y1", 295)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 640)
+    .attr("y1", 250)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 675)
+    .attr("y1", 340)
+    .attr("x2", 600)
+    .attr("y2", 530);
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 540)
+    .attr("y1", 370)
+    .attr("x2", 600)
+    .attr("y2", 530);
   svg.append("text")
     .attr("class", "annotation")
     .attr("x", 450)
     .attr("y", 530)
     .attr("dy", "1em").attr("font-size", "15")
-    .text("Bill Clinton won his home state(AR) and Louisiana");
+    .text("Bill Clinton won his home state(AR), Louisiana");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "2em").attr("font-size", "15")
+    .text("Georgia, Tennessee, and Kentucky.");
 
 
   svg = d3.select("#barchart");
@@ -1453,6 +1499,80 @@ function handle2000Annotations() {
     .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
     .style("fill", "black")
     .text("divorce and the review of divorce laws to create family stability.");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "red")
+    .style("stroke-width", .3)
+    .attr("x1", 395)
+    .attr("y1", 398)
+    .attr("x2", 315)
+    .attr("y2", 398);
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 400)
+    .attr("y", 388)
+    .attr("dy", "1em").attr("font-size", "15")
+    .style("fill", "red")
+    .text("The 2000 Republican Platform emphasized health care and care for the elderly.");
+}
+
+function handle2004Annotations() {
+  var svg = d3.select("#electoralmap");
+
+  svg.append('line')
+    .attr("class", "annotation")
+    .style("stroke", "black")
+    .style("stroke-width", .3)
+    .attr("x1", 625)
+    .attr("y1", 350)
+    .attr("x2", 600)
+    .attr("y2", 530);  
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 450)
+    .attr("y", 530)
+    .attr("dy", "1em").attr("font-size", "15")
+    .text("George W. Bush won, the entire South in his 2nd term.");
+
+
+  svg = d3.select("#barchart");
+
+   svg.append("rect")
+    .attr("class", "annotation")
+    .attr("height", 60)
+    .attr("y", 245)
+    .attr("x", 520)
+    .attr("width", 395)
+    .attr("fill", "lightgray");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "1em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("The 2004 Republican platform increased its reference to Abortion(12) while");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "2em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("the Democrats mentioned is sparingly(1) using strong language against the");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "3em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("GOP. Furthermore, the GOP defended the opposition of same-sex marriage");
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", 525)
+    .attr("y", 250)
+    .attr("dy", "4em").attr("font-size", "12").attr("font-weight","bold")
+    .style("fill", "black")
+    .text("for the first time.");
 
   svg.append('line')
     .attr("class", "annotation")
